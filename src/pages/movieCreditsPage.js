@@ -23,7 +23,8 @@ const MovieCreditsPage = (props) => {
 
     return (
         <>
-            <MovieCreditPageTemplate credits={data}></MovieCreditPageTemplate>
+            <MovieCreditPageTemplate credits={data}
+                  title="Movie Credits"></MovieCreditPageTemplate>
         </>
     );
 };
