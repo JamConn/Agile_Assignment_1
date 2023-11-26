@@ -2,6 +2,9 @@
 let movies;
 const movieId = 497582; // Enola Holmes movie id
 
+
+
+
 describe("The favourites feature", () => {
   before(() => {
     cy.request(

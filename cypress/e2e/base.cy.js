@@ -2,6 +2,9 @@
 let movies; // List of movies from TMDB
 let movie; //
 
+
+
+
 describe("Base tests", () => {
   before(() => {
     // Get the discover movies from TMDB and store them locally.

@@ -2,6 +2,9 @@
 let movies;
 let movieId; // Enola Holmes movie id
 
+
+
+
 describe("Navigation", () => {
   before(() => {
     cy.request(

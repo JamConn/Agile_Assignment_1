@@ -3,6 +3,9 @@ import { filterByGenre, filterByTitle } from "../support/e2e";
 
 let movies; // List of Discover movies from TMDB
 
+
+
+
 describe("Filtering", () => {
   before(() => {
     // Get movies from TMDB and store them locally.
