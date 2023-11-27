@@ -19,7 +19,7 @@ describe("Base tests", () => {
       });
   });
   beforeEach(() => {
-    cy.visit("/home");
+    cy.visit("/");
   });
 
   describe("The Discover Movies page", () => {
