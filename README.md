@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Assignment 1 - ReactJS app.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Name: Jamie Conlon
 
-## Available Scripts
+## Overview.
 
-In the project directory, you can run:
+This is my React Movies assignment 1 for Web App development 2. I am happy with some of the work I have gotten done although I had allowed myself too short a timespan to work on the project and wish I managed to give it more polish. I didnt get to overhaul the UI like I would have wanted and my firebase additions are only basic. Along with this I tried to implement a sort function similar to genre using a persons job, but I ran out of time before bug fixing for this branch.
 
-### `npm start`
+### Features.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-Basic login functionality using firebase auth through google for login and logout.
+-Added Recommendations to movie Details page
+-Added credits button to link to a movies credits
+-Credits page links to individual people
+-Peoples page links to their movie credits page
+-Popular page created
+-Top Rated Page created
+-Finished Watch later button f
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup requirements.
 
-### `npm test`
+npm install firebase
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## API endpoints.
 
-### `npm run build`
+-getTopRatedMovies - /movie/top_rated
+-getMovieRecommendations - movie/${id}/recommendations
+-getMovieCredits - /movie/${id}/credits
+-getPerson - /person/${id}
+-getPersonCredits - /person/${id}/movie_credits
+-getPopularReleases - /movie/popular
+-getJobs - /configuration/jobs  (Never Used)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Routing.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[ List the __new routes__ supported by your app and state the associated page.]
+Top Rated movies Page - /movies/toprated
+Popular movies Page - /movies/popular
+Must Watch movies page - /movies/mustwatch
+Specific movies credits (cast) -  /movies/:id/credits
+Specific person details - /person/:id
+Specific persons credits -  /person/:id/credits
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Sign in page switched to route - / and home page swapped to /home
 
-### `npm run eject`
+## Independent learning (If relevant).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://firebase.google.com/docs/web/setup - Used this in order to research basic firebase setup.
