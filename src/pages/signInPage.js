@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, signInWithGoogle } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -9,7 +9,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 
 
 function SignInPage() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
     if (loading) {
@@ -17,7 +17,7 @@ function SignInPage() {
       return;
     }
     if (user) navigate("/home");
-  }, [user, loading]);
+  },);
   return (
 
 
@@ -26,7 +26,8 @@ function SignInPage() {
           <ImageListItem key={img}>
               <img
                   src={img}
-                  loading="lazy" />
+                  loading="lazy"
+                  alt={img} />
           </ImageListItem>
       </ImageList>
       <Button style={{margin: '0 auto', display: "flex"}} onClick={signInWithGoogle}  variant="contained">
