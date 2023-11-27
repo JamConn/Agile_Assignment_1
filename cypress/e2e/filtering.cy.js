@@ -20,7 +20,7 @@ describe("Filtering", () => {
       });
   });
   beforeEach(() => {
-    cy.visit("/");
+    cy.visit("/home");
   });
 
   describe("By movie title", () => {

@@ -19,7 +19,7 @@ const SiteHeader = ({ history }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const [user, loading] = useAuthState(auth);
+  const [loading] = useAuthState(auth);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -46,7 +46,6 @@ const SiteHeader = ({ history }) => {
 
   useEffect(() => {
     if (loading) return;
-    if (!user) return navigate("/");
   },);
 
   return (

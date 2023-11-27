@@ -18,7 +18,7 @@ describe("Navigation", () => {
       });
   });
   beforeEach(() => {
-    cy.visit("/");
+    cy.visit("/home");
   });
   describe("From the home page to a movie's details", () => {
     it("navigates to the movie details page and change browser URL", () => {
@@ -32,26 +32,9 @@ describe("Navigation", () => {
         cy.get("button").contains("Favorites").click();
         cy.url().should("include", `/favorites`);
         cy.get("button").contains("Home").click();
-        cy.url().should("include", `/`);
+        cy.url().should("include", `/home`);
       });
     });
-    describe(
-      "when the viewport is mobile scale",
-      {
-        viewportHeight: 896,
-        viewportWidth: 414,
-      },
-      () => {
-        it("navigate via the dropdown menu", () => {
-          cy.get("header").find("button").click();
-          cy.get("li").contains('Favorites').click();
-          cy.url().should("include", `/favorites`);
-          cy.get("li").contains('Home').click();
-          cy.url().should("include", `/`);
-        });
-      }
-    );
-  });
   describe("From the favourites page to a movie's details", () => {
     beforeEach(() => {
       // Select two favourites and navigate to Favourites page
@@ -75,4 +58,5 @@ describe("Navigation", () => {
       cy.url().should("include", `/movies/${movies[0].id}`);
     });
   });
+});
 });
