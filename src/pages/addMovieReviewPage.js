@@ -1,10 +1,10 @@
-import React from "react";
-import PageTemplate from "../components/templateMoviePage";
-import ReviewForm from "../components/reviewForm";
+import React, { useState, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getMovie } from "../api/tmdb-api";
-import Spinner from "../components/spinner";
+const ReviewForm = lazy(() => import("../components/reviewForm"));
+const Spinner = lazy(() => import("../components/spinner"));
+const PageTemplate = lazy(() => import("../components/templateMoviePage"));
 
 const WriteReviewPage = (props) => {
   const location = useLocation();
@@ -16,16 +16,20 @@ const WriteReviewPage = (props) => {
   );
 
   if (isLoading) {
-    return <Spinner />;
+    <Suspense fallback={<h1>Loading</h1>}>
+    return <Spinner />
+    </Suspense>;
   }
 
   if (isError) {
     return <h1>{error.message}</h1>;
   }
   return (
+    <Suspense fallback={<h1>Loading</h1>}>
     <PageTemplate movie={movie}>
       <ReviewForm movie={movie} />
     </PageTemplate>
+    </Suspense>
   );
 };
 

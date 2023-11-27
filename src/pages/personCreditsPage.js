@@ -1,9 +1,10 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { useParams } from 'react-router-dom';
 import { getPersonCredits } from '../api/tmdb-api'
 import { useQuery } from "react-query";
-import PersonCreditsPageTemplate from "../components/templarePersonCreditsPage";
-import Spinner from '../components/spinner'
+const PersonCreditsPageTemplate = lazy(() => import("../components/templarePersonCreditsPage"));
+const Spinner = lazy(() => import("../components/spinner"));
+
 
 
 
@@ -16,7 +17,9 @@ const PersonCreditsPage = (props) => {
     );
 
     if (isLoading) {
+        <Suspense fallback={<h1>Loading</h1>}>
         return <Spinner />;
+        </Suspense>
     }
 
     if (isError) {
@@ -24,8 +27,9 @@ const PersonCreditsPage = (props) => {
     }
     return (
         <>
-
+            <Suspense fallback={<h1>Loading</h1>}>
             <PersonCreditsPageTemplate credits={data}></PersonCreditsPageTemplate>
+            </Suspense>
 
         </>
     );

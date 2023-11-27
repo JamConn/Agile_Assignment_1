@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { useParams } from 'react-router-dom';
 import { getMovieCredits } from '../api/tmdb-api'
 import { useQuery } from "react-query";
-import MovieCreditPageTemplate from "../components/movieCreditPageTemplate"
-import Spinner from '../components/spinner'
+const MovieCreditPageTemplate = lazy(() => import("../components/movieCreditPageTemplate"));
+const Spinner = lazy(() => import("../components/spinner"));
 
 const MovieCreditsPage = (props) => {
     const { id } = useParams();
@@ -14,7 +14,9 @@ const MovieCreditsPage = (props) => {
     );
 
     if (isLoading) {
+        <Suspense fallback={<h1>Loading</h1>}>
         return <Spinner />;
+        </Suspense>
     }
 
     if (isError) {
@@ -23,9 +25,12 @@ const MovieCreditsPage = (props) => {
 
     return (
         <>
+            <Suspense fallback={<h1>Loading</h1>}>
             <MovieCreditPageTemplate credits={data}
                   title="Movie Credits"></MovieCreditPageTemplate>
+            </Suspense>
         </>
+
     );
 };
 

@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import PageTemplate from "../components/templateMovieListPage";
+import React, { useContext, lazy, Suspense } from "react";
 import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
 import { getMovie } from "../api/tmdb-api";
-import Spinner from '../components/spinner'
-import WriteReview from "../components/cardIcons/writeReview";
-import RemoveFromMustWatch from "../components/cardIcons/removeFromMustWatch";
+const PageTemplate = lazy(() => import("../components/templateMovieListPage"));
+const Spinner = lazy(() => import("../components/spinner"));
+const WriteReview = lazy(() => import("../components/cardIcons/writeReview"));
+const RemoveFromMustWatch = lazy(() => import("../components/cardIcons/removeFromMustWatch"));
 
 const MustWatchPage = () => {
   const { mustWatch: movieIds } = useContext(MoviesContext);
@@ -24,7 +24,9 @@ const MustWatchPage = () => {
   const isLoading = mustWatchMovieQueries.find((m) => m.isLoading === true);
 
   if (isLoading) {
+    <Suspense fallback={<h1>Loading</h1>}>
     return <Spinner />;
+    </Suspense>
   }
 
   const movies = mustWatchMovieQueries.map((q) => {
@@ -35,6 +37,7 @@ const MustWatchPage = () => {
 
 
   return (
+    <Suspense fallback={<h1>Loading</h1>}>
     <PageTemplate
       title="Your Must Watch Movies"
       movies={movies}
@@ -47,6 +50,7 @@ const MustWatchPage = () => {
         );
       }}
     />
+    </Suspense>
   );
 };
 

@@ -1,18 +1,21 @@
 // import React, { useState, useEffect } from "react";
-import PageTemplate from '../components/templateMovieListPage'
+import React, { lazy, Suspense } from "react";
 import { getTopRatedMovies } from "../api/tmdb-api";
 
 import { useQuery } from 'react-query';
-import Spinner from '../components/spinner';
 
-import MustWatchIcon from "../components/cardIcons/mustWatch";
+const Spinner = lazy(() => import("../components/spinner"));
+const MustWatchIcon = lazy(() => import("../components/cardIcons/mustWatch"));
+const PageTemplate = lazy(() => import("../components/templateMovieListPage"));
 
 
 const TopRatedMoviesPage = (props) => {
     const { data, error, isLoading, isError } = useQuery('TopRated', getTopRatedMovies)
 
     if (isLoading) {
+        <Suspense fallback={<h1>Loading</h1>}>
         return <Spinner />
+        </Suspense>
     }
 
     if (isError) {
@@ -25,6 +28,7 @@ const TopRatedMoviesPage = (props) => {
 
 
     return (
+        <Suspense fallback={<h1>Loading</h1>}>
         <PageTemplate
             title='Top Rated Movies'
             movies={toprated}
@@ -32,6 +36,7 @@ const TopRatedMoviesPage = (props) => {
                 return <MustWatchIcon movie={movie} />
             }}
         />
+        </Suspense>
     );
 };
 export default TopRatedMoviesPage;
